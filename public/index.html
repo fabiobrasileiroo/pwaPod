@@ -69,6 +69,52 @@
             #score-table .current-player {
                 color: #bdaa27;
             }
+            /* styles div seta */
+             /* Estilos para os elementos de movimento */
+        .arrow {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+        
+        /* Setas para cima e para baixo */
+        #move-up, #move-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            cursor: pointer;
+        }
+
+        #move-up {
+            border-bottom: 20px solid black;
+            margin-right: 5px;
+        }
+
+        #move-down {
+            border-top: 20px solid black;
+            margin-left: 5px;
+        }
+
+        /* Setas para esquerda e direita */
+        #move-left, #move-right {
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            cursor: pointer;
+        }
+
+        #move-left {
+            border-right: 20px solid black;
+            margin-right: 5px;
+        }
+
+        #move-right {
+            border-left: 20px solid black;
+            margin-left: 5px;
+        }
 
         </style>
         <script src="/socket.io/socket.io.js"></script>
@@ -77,9 +123,50 @@
     <body>
         <canvas id="screen" width="10" height="10"></canvas>
         <table id="score-table"></table>
+        <!-- <div>
+            <div onclick="cima()">cima</div>
+            <div onclick="esquerda()">esquerda</div>
+            <div onclick="direita()">direita</div>
+            <div onclick="baixo()">baixo</div>
+            
+        </div>
+        <div id="move-up">cima</div>
+        <div id="move-left">esquerda</div>
+        <div id="move-right">direita</div>
+        <div id="move-down">baixo</div> -->
+
+        <!-- <div id="move-up">cima</div>
+        <div id="move-left">esquerda</div>
+        <div id="move-right">direita</div>
+        <div id="move-down">baixo</div> -->
+        <div>
+            <div id="move-up" class="arrow"></div>
+            <div id="move-left" class="arrow"></div>
+            <div id="move-right" class="arrow"></div>
+            <div id="move-down" class="arrow"></div>
+        </div>
 
         <script type="module">
-		
+
+// Adicione IDs aos elementos de clique na interface
+
+// Adicione event listeners para os elementos de clique
+document.getElementById('move-up').addEventListener('click', () => {
+    game.movePlayer({ playerId: socket.id, keyPressed: 'ArrowUp' });
+});
+
+document.getElementById('move-left').addEventListener('click', () => {
+    game.movePlayer({ playerId: socket.id, keyPressed: 'ArrowLeft' });
+});
+
+document.getElementById('move-right').addEventListener('click', () => {
+    game.movePlayer({ playerId: socket.id, keyPressed: 'ArrowRight' });
+});
+
+document.getElementById('move-down').addEventListener('click', () => {
+    game.movePlayer({ playerId: socket.id, keyPressed: 'ArrowDown' });
+});
+
 		let deferredPrompt
 				window.addEventListener('beforeinstallprompt', (e) => {
 					deferredPrompt = e
@@ -137,7 +224,7 @@
             })
 
             socket.on('add-player', (command) => {
-                // console.log(`Receiving ${command.type} -> ${command.playerId}`)
+                console.log(`Receiving ${command.type} -> ${command.playerId}`)
                 game.addPlayer(command)
             })
 
@@ -147,13 +234,14 @@
             })
 
             socket.on('move-player', (command) => {
-                // console.log(`Receiving ${command.type} -> ${command.playerId}`)
+                console.log(`Receiving ${command.type} -> ${command.playerId}`)
 
                 const playerId = socket.id
 
                 if (playerId !== command.playerId) {
                     game.movePlayer(command)
                 }
+                    console.log("🚀 ~ socket.on ~ command:", command)
             })
 
             socket.on('add-fruit', (command) => {

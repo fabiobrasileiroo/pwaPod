@@ -97,6 +97,7 @@ export default function createGame() {
     function movePlayer(command) {
         notifyAll(command)
         
+        console.log(command)
         const acceptedMoves = {
             ArrowUp(player) {
                 player.y = mod(state.screen.height, player.y - 1)
