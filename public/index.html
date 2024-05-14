@@ -71,14 +71,14 @@
             }
             /* styles div seta */
              /* Estilos para os elementos de movimento */
-        .arrow {
+        /* .arrow {
             display: inline-block;
             width: 0;
             height: 0;
             border-style: solid;
-        }
-        
-        /* Setas para cima e para baixo */
+        } */
+/*         
+         Setas para cima e para baixo 
         #move-up, #move-down {
             width: 0;
             height: 0;
@@ -97,7 +97,7 @@
             margin-left: 5px;
         }
 
-        /* Setas para esquerda e direita */
+        /* Setas para esquerda e direita 
         #move-left, #move-right {
             width: 0;
             height: 0;
@@ -114,6 +114,10 @@
         #move-right {
             border-left: 20px solid black;
             margin-left: 5px;
+        } */
+        .arrow-container {
+            display: flex;
+
         }
 
         </style>
@@ -139,12 +143,318 @@
         <div id="move-left">esquerda</div>
         <div id="move-right">direita</div>
         <div id="move-down">baixo</div> -->
-        <div>
-            <div id="move-up" class="arrow"></div>
-            <div id="move-left" class="arrow"></div>
-            <div id="move-right" class="arrow"></div>
-            <div id="move-down" class="arrow"></div>
-        </div>
+
+ <style>
+.controller{
+  margin-top: 100px;
+  height: 200px;
+  width: 400px;
+  background-color: #E6E6E6;
+  position: relative;
+  box-shadow: 15px 15px 15px rgba(0,0,0,0.2);
+}
+
+.controllerLeft{
+  height: 250px;
+  width: 250px;
+  background-color: #E6E6E6;
+  position: absolute;
+  border-radius: 100%;
+  margin-left: -125px;
+  box-shadow: -15px 8px 15px rgba(0,0,0,0.2);
+}
+
+.controllerRight{
+  height: 250px;
+  width: 250px;
+  background-color: #B8B8B8;
+  position: relative;
+  border-radius: 100%;
+  margin-right: -125px;
+  border: solid 15px rgba(230, 230, 230,1);
+  box-shadow: 15px 8px 15px rgba(0,0,0,0.2);
+}
+
+.circle{
+  height: 150px;
+  width: 150px;
+  background-color: #E6E6E6;
+  position: absolute;
+  border-radius: 100%;
+  border: solid 5px rgba(184, 184, 184, 1);
+  margin-left: 42px;
+  margin-top: 52px;
+}
+
+.crossCenter{
+  background-color: #333333;
+  width: 35px;
+  height: 35px;
+  margin-top: 110px;
+  margin-left: 100px;
+  position: relative;
+}
+
+.crossCircle{
+  background-color: #292929;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border-radius: 100%;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.crossTop{
+  background-color: #333333;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 15%;
+  margin-top: -30px;
+}
+
+.crossBottom{
+  background-color: #333333;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 15%;
+  margin-top: 30px;
+}
+
+.crossLeft{
+  background-color: #333333;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 15%;
+  margin-left: -30px;
+}
+
+.crossRight{
+  background-color: #333333;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 15%;
+  margin-left: 30px;
+}
+
+.centerBlue{
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  margin-left: 175px;
+  margin-top: 30px;
+  background-color: #0099FF;
+}
+
+.centerLeft{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: 0px;
+  background-color: #0099FF;
+  border-radius: 100%;
+}
+
+.centerRight{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 40px;
+  margin-top: 0px;
+  background-color: #0099FF;
+  border-radius: 100%;
+}
+
+.backButton1Center{
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background-color: #E6E6E6;
+  -webkit-transform: rotate(-30deg);
+  margin-top: 60px;
+  margin-left: 45px;
+}
+
+.backButton2Center{
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background-color: #E6E6E6;
+  -webkit-transform: rotate(-30deg);
+  margin-top: 115px;
+  margin-left: 90px;
+}
+
+.cornerLeft1{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #00B800;
+  border-radius: 100%;
+  margin-left: -20px;
+  border: solid 5px rgba(230, 230, 230, 1)
+}
+
+.cornerRight1{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #6699FF;
+  border-radius: 100%;
+  margin-left: 60px;
+  border: solid 5px rgba(230, 230, 230, 1)
+}
+
+.cornerLeft2{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #CFCF00;
+  border-radius: 100%;
+  margin-left: -20px;
+  border: solid 5px rgba(230, 230, 230, 1)
+}
+
+.cornerRight2{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #7D230D;
+  border-radius: 100%;
+  margin-left: 60px;
+  border: solid 5px rgba(230, 230, 230, 1)
+}
+
+.centerStart{
+  background-color: #B8B8B8;
+  position: absolute;
+  height: 35px;
+  width: 10px;
+  margin-left: 180px;
+  margin-top: 110px;
+  -webkit-transform: rotate(20deg);
+}
+
+.centerSelect{
+  background-color: #B8B8B8;
+  position: absolute;
+  height: 35px;
+  width: 10px;
+  margin-left: 205px;
+  margin-top: 110px;
+  -webkit-transform: rotate(20deg);
+}
+
+.SLeft{
+  background-color: #B8B8B8;
+  position: absolute;
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+  margin-top: 30px;
+}
+
+.SRight{
+  background-color: #B8B8B8;
+  position: absolute;
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+  margin-top: -5px;
+}
+
+.cable{
+  background-color: black;
+  width: 10px;
+  height: 150px;
+  position: absolute;
+  margin-left: 49.7%;
+  margin-top: -100px;
+  box-shadow: 7px 8px 15px rgba(0,0,0,0.2);
+}
+.darken-background {
+    background-color: rgba(0, 0, 0, 0.6); /* Cor de fundo escurecida */
+    /* Outras propriedades de estilo que você deseja aplicar quando o fundo estiver escurecido */
+}
+
+</style>
+<div style="margin-top: 200px;display: flex;justify-content: center;align-items: center;">
+
+    <div class=controllerLeft>
+        <div class=circle></div>
+    <div class=crossCenter>
+      <div id="move-up" class=crossTop></div>
+      <div id="move-down" class=crossBottom></div>
+      <div id="move-left" class=crossLeft></div>
+      <div id="move-right" class=crossRight></div>
+      <div class=crossCircle></div>
+    </div>
+</div>
+</div>
+<script>
+//     document.addEventListener('DOMContentLoaded', function() {
+//         var crossElements = document.querySelectorAll('.crossTop, .crossBottom, .crossLeft, .crossRight');
+
+//     // Adiciona evento de clique a cada elemento
+//     crossElements.forEach(function(element) {
+//         element.addEventListener('click', function() {
+//             // Adiciona classe para escurecer o fundo da div clicada
+//             this.classList.add('darken-background').then(function() {
+//                 // Adiciona classe para escurecer o fundo da div clicada   
+//                 setInterval(function() {
+//                     this.classList.remove('darken-background');
+//                 },1000)
+//             })
+//             // clearTimeout(timeout);
+//             // setInterval(function() {
+//             // },1000)
+//             // Define um temporizador para remover a classe após 1 segundo
+        
+//         });
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var crossElements = document.querySelectorAll('.crossTop, .crossBottom, .crossLeft, .crossRight');
+
+    // Adiciona evento de clique a cada elemento
+    crossElements.forEach(function(element) {
+        element.addEventListener('click', function() {
+            // Adiciona classe para escurecer o fundo da div clicada
+            this.classList.add('darken-background');
+
+            // Define um temporizador para remover a classe após 1 segundo
+            setTimeout(() => {
+                this.classList.remove('darken-background');
+            }, 100);
+        });
+    });
+});
+
+</script>
+<!--   
+        <div style="display: flex;justify-content: center;align-items: center;">
+
+            <div id="move-up" class="arrow" style="width:50px;display: block;"  ><button style="width: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-><path d="M318 177.5c3.8-8.8 2-19-4.6-26l-136-144C172.9 2.7 166.6 0 160 0s-12.9 2.7-17.4 7.5l-136 144c-6.6 7-8.4 17.2-4.6 26S14.4 192 24 192H96l0 288c0 17.7 14.3 32 32 32h64c17.7 0 32-14.3 32-32l0-288h72c9.6 0 18.2-5.7 22-14.5z"/></svg>
+            </button></div>
+            <div class="arrow-container">
+                <div id="move-left" class="arrow" style="width: 50px;"><button style="width: 50px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-><path d="M177.5 414c-8.8 3.8-19 2-26-4.6l-144-136C2.7 268.9 0 262.6 0 256s2.7-12.9 7.5-17.4l144-136c7-6.6 17.2-8.4 26-4.6s14.5 12.5 14.5 22l0 72 288 0c17.7 0 32 14.3 32 32l0 64c0 17.7-14.3 32-32 32l-288 0 0 72c0 9.6-5.7 18.2-14.5 22z"/></svg>
+                </button></div>
+                <div id="move-right" class="arrow" style="width: 50px;"><button style="width: 50px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-><path d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z"/></svg>
+                </button></div>
+            </div>
+            <div id="move-down" class="arrow" style="width: 50px;"><button style="width: 50px;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-><path d="M2 334.5c-3.8 8.8-2 19 4.6 26l136 144c4.5 4.8 10.8 7.5 17.4 7.5s12.9-2.7 17.4-7.5l136-144c6.6-7 8.4-17.2 4.6-26s-12.5-14.5-22-14.5l-72 0 0-288c0-17.7-14.3-32-32-32L128 0C110.3 0 96 14.3 96 32l0 288-72 0c-9.6 0-18.2 5.7-22 14.5z"/></svg>
+            </button></div>
+        </div> -->
 
         <script type="module">
 
